@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+</head>
+<body>
+    <%-include('../inc/Top.ejs') %>
+    <hr />
+    <div class="container">
+        <h2>상품 상세 보기</h2>
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <td><%=car._id %></td>
+            </tr>
+            <tr>
+                <th>NAME</th>
+                <td><%=car.name %></td>
+            </tr>
+            <tr>
+                <th>PRICE</th>
+                <td><%=car.price %></td>
+            </tr>
+            <tr>
+                <th>YEAR</th>
+                <td><%=car.year %></td>
+            </tr>
+            <tr>
+                <th>COMPANY</th>
+                <td><%=car.company %></td>
+            </tr>
+            <tr>
+                <th>PHOTO</th>
+                <td>
+                    <%
+                    car.photos.forEach((photo) => {
+                    %>
+                        <img width="200" src="../uploads/<%=photo.filename %>" alt="<%=photo.originalname %>" title="<%=photo.originalname %>">
+                    <%
+                    });
+                    %>
+                    </td>
+            </tr>
+        </table>
+        <hr/>
+        <a href="/shop/modify?_id=<%=car._id%>">수정</a> | 
+        <a href="/shop/delete?_id=<%=car._id%>">삭제</a> | 
+        <%-include('./ShopNav.ejs') %>
+    </div>
+</body>
+</html>

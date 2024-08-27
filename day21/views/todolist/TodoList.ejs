@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%-include('../inc/Top.ejs') %>
+    <hr />
+    <div class="container">
+        <h2>TodoList</h2>
+        <table width="100%" border="1">
+            <tr>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>상태</th>
+                <th>수정</th>
+                <th>삭제</th>
+            </tr>
+        <%
+            todoList.forEach((todo, index) => {
+        %>
+            <tr>
+                <td><%= index %></td>
+                <td><%= todo.title %></td>
+                <td><%= todo.done %></td>
+                <td><a href="modify?_id=<%= todo._id %>">수정</a></td>
+                <td><a href="delete?_id=<%= todo._id %>">삭제</a></td>
+            </tr>
+        <%
+            });
+        %>
+        </table>
+        <a href="input">입력</a> | 
+        <a href="modify">수정</a> | 
+        <a href="detail">상세보기</a>
+    </div>
+</body>
+</html>
